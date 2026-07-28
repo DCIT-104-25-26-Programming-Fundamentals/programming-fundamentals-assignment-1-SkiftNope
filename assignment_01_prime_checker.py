@@ -35,3 +35,24 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# Function to check if a number is a prime
+def is_prime(number):
+    # Numbers less than 2 are not prime numbers
+    if number < 2:
+        return False
+
+    # Checking whether the number has a divisor from 2 up to (number-1)
+    for i in range(2, number):
+        if number % i == 0:
+            return False
+
+    return True
+
+
+# The program
+num = int(input("Enter a number: "))
+
+if is_prime(num):
+    print(f"{num} is a prime number.")
+else:
+    print(f"{num} is NOT a prime number.")
