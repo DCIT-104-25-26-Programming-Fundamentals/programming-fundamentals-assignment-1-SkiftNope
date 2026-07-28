@@ -60,3 +60,104 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+#Helper
+def print_matrix(matrix):
+    for row in matrix:
+        for value in row:
+            print(f"{value:5}", end=" ")
+        print()
+    print()
+
+
+# Transpose a Matrix
+def transpose(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    transposed = []
+    for c in range(cols):
+        new_row = []
+        for r in range(rows):
+            new_row.append(matrix[r][c])
+        transposed.append(new_row)
+
+    return transposed
+
+
+# Add Two Matrices
+def add_matrices(A, B):
+    rows = len(A)
+    cols = len(A[0])
+
+    result = []
+    for r in range(rows):
+        new_row = []
+        for c in range(cols):
+            new_row.append(A[r][c] + B[r][c])
+        result.append(new_row)
+
+    return result
+
+
+#  Multiply Two Matrices
+def multiply_matrices(A, B):
+    M = len(A)
+    N = len(A[0])
+    P = len(B[0])
+
+    # Result matrix M x P
+    result = []
+    for i in range(M):
+        new_row = []
+        for j in range(P):
+            total = 0
+            for k in range(N):
+                total += A[i][k] * B[k][j]
+            new_row.append(total)
+        result.append(new_row)
+
+    return result
+
+
+# Read a matrix from user
+def read_matrix():
+    rows = int(input("Enter number of rows: "))
+    cols = int(input("Enter number of columns: "))
+
+    matrix = []
+    for r in range(rows):
+        row = list(map(int, input(f"Enter row {r+1}: ").split()))
+        matrix.append(row)
+
+    return matrix
+
+
+
+#The Program
+
+print("=== PART A: TRANSPOSE A MATRIX ===")
+A = read_matrix()
+print("\nOriginal Matrix:")
+print_matrix(A)
+
+T = transpose(A)
+print("Transposed Matrix:")
+print_matrix(T)
+
+print("=== PART B: ADD TWO MATRICES ===")
+print("Enter Matrix 1:")
+M1 = read_matrix()
+print("Enter Matrix 2:")
+M2 = read_matrix()
+
+print("\nSum of Matrices:")
+print_matrix(add_matrices(M1, M2))
+
+print("=== PART C: MULTIPLY TWO MATRICES ===")
+print("Enter Matrix A:")
+A = read_matrix()
+print("Enter Matrix B:")
+B = read_matrix()
+
+print("\nProduct A × B:")
+print_matrix(multiply_matrices(A, B))
